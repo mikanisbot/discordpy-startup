@@ -377,44 +377,14 @@ async def bug(ctx, *, text):
 async def on_ready():
     evals.setup(bot)
                             
-                            
-         import discord
-import urllib.request
-import json
-import re
-from discord.ext import commands
-import random
-from bs4 import BeautifulSoup
-from urllib import request
-import time
-import datetime
-import requests
-
-client = commands.Bot(command_prefix='!!')
-
-citycodes = {
-    "土浦": '080020',
-    "水戸": '080010',
-    "札幌": '016010',
-    "仙台": '040010',
-    "東京": '130010',
-    "横浜": '140010',
-    "名古屋": '230010',
-    "大阪": '270000',
-    "広島": '340010',
-    "福岡": '400010',
-    "鹿児島": '460010',
-    "那覇": '471010'
-}
-
-
-@client.event
+           @bot.event
 async def on_ready():
-    await client.change_presence(activity=discord.Game(name="(Python)です"))
-    print("logged in as " + client.user.name)
+    await bot.change_presence(activity=discord.Game(name="(Python)です"))
+    evals.setup(bot)
+    print("logged in as " + bot.user.name)
 
 
-@client.command(name="天気予報", pass_context=True, aliases=["weather"])
+@bot.command(name="天気予報", pass_context=True, aliases=["weather"])
 async def _weatherdayo(msg, address):
     color = random.randint(0x000000, 0xffffff)
     Url = "https://tenki.jp"
@@ -454,5 +424,22 @@ async def _weatherdayo(msg, address):
     # print("最高気温:{} {}".format(temp_max,temp_max_diff))
     # print("最低気温:{} {}".format(temp_min,temp_min_diff))
 
-client.run("とくん　プレゼントだよ！")                   
+
+@bot.command(name='文字')
+async def moji(ctx, text):
+    fontFile = 'mplus-1c-regular.ttf'
+    font = ImageFont.truetype(fontFile, 64, encoding='utf-8')
+    w, h = font.getsize(text)
+    im = Image.new('RGBA', (w, h), (255, 255, 255, 0))
+    draw = ImageDraw.Draw(im)
+    draw.text((0, 0), text, fill=(117, 220, 120), font=font)
+    im.save('image.png')
+    f = discord.File("image.png", filename="image.png")
+    e = discord.Embed()
+    e.set_image(url="attachment://image.png")
+    await ctx.send(file=f, embed=e)
+    await ctx.message.delete()
+                 
+         
+          
 bot.run(token)
