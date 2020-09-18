@@ -53,9 +53,6 @@ async def on_message(message):
 
         if message.channel.name == GLOBAL_CH_NAME:
             # hoge-globalの名前をもつチャンネルに投稿されたので、メッセージを転送する
-
-            await message.delete()  # 元のメッセージは削除しておく
-
             channels = bot.get_all_channels()
             global_channels = [
                 ch for ch in channels if ch.name == GLOBAL_CH_NAME]
@@ -72,8 +69,13 @@ async def on_message(message):
             # Embedインスタンスを生成、投稿者、投稿場所などの設定
 
             for channel in global_channels:
+                if message.attachments:
+                    file = await message.attachments[0].to_file()
+                    embed.set_image(url="attachment://"+file.filename)
                 # メッセージを埋め込み形式で転送
                 await channel.send(embed=embed)
+
+            await message.delete()  # 元のメッセージは削除しておく
     except Exception as error:
         await on_command_error(message.channel, error)
     await bot.process_commands(message)
