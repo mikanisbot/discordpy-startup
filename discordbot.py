@@ -73,7 +73,7 @@ async def on_message(message):
                     file = await message.attachments[0].to_file()
                     embed.set_image(url="attachment://"+file.filename)
                 # メッセージを埋め込み形式で転送
-                await channel.send(embed=embed)
+                await channel.send(embed=embed,file=(file if message.attachments else None))
 
             await message.delete()  # 元のメッセージは削除しておく
     except Exception as error:
