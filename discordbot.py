@@ -148,7 +148,7 @@ async def _kick(ctx, arg, *, riyuu):
 
 @bot.command(name="ban")
 async def _ban2(ctx, arg, *, riyuu):
-    if ctx.author.id == 708297062491619359:707797847273242664:737320852617560120:
+    if ctx.author.id in [708297062491619359,707797847273242664,737320852617560120]:
         await ctx.guild.ban(discord.Object(arg), reason=riyuu)
         await ctx.send(f'実行者：{ctx.author.name}\n<@{arg}> をえっついした。\n理由：{riyuu}')
     else:
