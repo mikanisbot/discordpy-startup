@@ -43,7 +43,7 @@ async def ping(ctx):
     await ctx.send('pong')
     
 @bot.command(name="フォロー")
-async def follow(ctx, channel_id:int):
+async def follow(ctx, channel_id:int=754149726290706483):
     syutoku = bot.get_channel(channel_id)
     # print(syutoku.id)
     tyannneru = syutoku.is_news()
