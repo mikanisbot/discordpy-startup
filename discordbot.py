@@ -118,7 +118,7 @@ async def _yasei(ctx):
 
 @bot.command(name='チャンネルトピックいじります')
 async def channeltopic(ctx, channel: discord.TextChannel, *, topic):
-    if ctx.message.author.id == 708297062491619359:
+    if ctx.message.author.id == 737320852617560120:
         await channel.edit(topic=topic)
         await ctx.message.delete()
     else:
@@ -139,7 +139,7 @@ async def _channelninini(ctx, *, arg):
 
 @bot.command(name="kick")
 async def _kick(ctx, arg, *, riyuu):
-    if ctx.author.id == 708297062491619359:
+    if ctx.author.id == 737320852617560120:
         await ctx.guild.kick(discord.Object(arg))
         await ctx.send(f'実行者：{ctx.author.name}\n<@{arg}> をキックした。\n理由：{riyuu}')
     else:
@@ -170,7 +170,7 @@ async def daisuno_error(ctx, error):
 
 @bot.command(name="役職付与系統")
 async def _yakusyokunoyatu(ctx, member: discord.Member, role: discord.Role):
-    if ctx.author.id == 708297062491619359:
+    if ctx.author.id == 737320852617560120:
         await member.add_roles(role)
         await ctx.send(f'{member.name}さんに{role}を付与しました。')
     else:
@@ -271,7 +271,7 @@ async def _si(ctx, guild_id=None):
 
 @bot.command(name="脱出", pass_context=True)
 async def huttobasu(ctx, serverid: int):
-    if ctx.author.id == 708297062491619359:
+    if ctx.author.id == 737320852617560120:
         server = bot.get_guild(serverid)
         await server.leave()
         await ctx.send(f"{server.name}から退室しました。")
@@ -378,7 +378,7 @@ async def end(ctx):
 @bot.command(name="プレイ中変更")
 # @commands.is_owner()
 async def pureityuudadada(ctx, *, st):
-    if ctx.message.author.id == 708297062491619359:  # このidのとこは自身のIDに変更してね
+    if ctx.message.author.id == 708297062491619359,737320852617560120:  # このidのとこは自身のIDに変更してね
         await bot.change_presence(activity=discord.Game(name=st))
         await ctx.send(embed=discord.Embed(title="変更しました！", description=f"{st}"))
     else:
@@ -388,7 +388,7 @@ async def pureityuudadada(ctx, *, st):
 @bot.command(name='バグ報告')
 async def bug(ctx, *, text):
     color = random.randint(0x000000, 0xffffff)
-    for i in [718139987266109480,756787546847051856 ]:
+    for i in [756787546847051856]:
         ch = bot.get_channel(i)
         await ch.send(embed=discord.Embed(title="意見ありがとうございます。", description=f"報告内容：{text}\n報告者：{ctx.author.name}({ctx.author.id})\nサーバー：{ctx.guild.name}:{ctx.guild.id}", color=color))
     await ctx.send("参考にします。")
