@@ -378,7 +378,7 @@ async def end(ctx):
 @bot.command(name="プレイ中変更")
 # @commands.is_owner()
 async def pureityuudadada(ctx, *, st):
-    if ctx.message.author.id == 708297062491619359,737320852617560120:  # このidのとこは自身のIDに変更してね
+    if ctx.message.author.id in [708297062491619359,737320852617560120]:  # このidのとこは自身のIDに変更してね
         await bot.change_presence(activity=discord.Game(name=st))
         await ctx.send(embed=discord.Embed(title="変更しました！", description=f"{st}"))
     else:
