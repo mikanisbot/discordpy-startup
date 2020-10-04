@@ -15,7 +15,7 @@ adminid = 704702259665043476
 developer = [704702259665043476, 562308096538705930]
 intents = discord.Intents.all()
 bot = commands.Bot(command_prefix='/', intents=intents)
-token = "NzU5NDEwNDIyNTkxMzg5NzM2.X29GEQ.py4Dm0IZrVIWqIukZS2jJmy7KTA"
+token = "DISCORD_BOT_TOKEN"
 
 bot.remove_command('help')
 
@@ -454,22 +454,13 @@ async def bug(ctx, *, text):
     await ctx.send("参考にします。")
     await ctx.message.delete()
 
-
-@bot.event
-async def on_ready():
-    await bot.change_presence(activity=discord.Game(name="夏海が起きてるよぉん(❁´ω`❁)"))
-    print("logged in as " + bot.user.name)
-    member = bot.get_user(adminid)
-    await member.send("起動完了")
-
-bot.run(token)
 	
 
 
 
 @bot.event
 async def on_ready():
-    await bot.change_presence(activity=discord.Game(name="(Python)です"))
+    await bot.change_presence(activity=discord.Game(name="夏海が起きてるよぉん(❁´ω`❁)"))
     evals.setup(bot)
     print("logged in as " + bot.user.name)
     for channel in bot.get_all_channels():
