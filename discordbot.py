@@ -469,7 +469,7 @@ bot.run(token)
 
 @bot.event
 async def on_ready():
-    await bot.change_presence(activity=discord.Game(name="(Python)です"))
+    await bot.change_presence(activity=discord.Game(name="夏海が起きてるよぉん(❁´ω`❁)"))
     evals.setup(bot)
     print("logged in as " + bot.user.name)
     for channel in bot.get_all_channels():
